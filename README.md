@@ -24,11 +24,11 @@ Make sure you have the following installed:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/netflix-gemini.git
+   git clone https://github.com/ProtoShiva/Netflix-gemini.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd netflix-gemini
+   cd Netflix-gemini
    ```
 3. Install dependencies:
    ```bash
@@ -49,27 +49,24 @@ or with Yarn:
 yarn start
 ```
 
-## 📅 Current Date
-Sunday, January 19, 2025, 6 PM IST
+### Exploring the App
 
-## 🤝 Contributing
-Contributions are welcome! Please see the `CONTRIBUTING.md` file for guidelines on how to contribute.
+![Screenshot 2025-01-18 222030](https://github.com/user-attachments/assets/3644cc3d-dee6-4d03-988e-602885ea2140)
 
-## 📜 License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+![Screenshot 2025-01-18 222150](https://github.com/user-attachments/assets/34c8bf0b-86ef-45dc-a8b0-8e1b9198fe02)
 
-## 📫 Contact
-For any inquiries or feedback, please reach out to:
-- Your Name - [Your Twitter Handle](https://twitter.com/yourhandle) - your.email@example.com
+![Screenshot 2025-01-18 222210](https://github.com/user-attachments/assets/401db98e-d74e-40b6-85d8-0b2d254fca9b)
+
+![Screenshot 2025-01-18 222235](https://github.com/user-attachments/assets/8661fde9-6e1d-4ff8-911a-2e43e998d4ff)
+
+![Screenshot 2025-01-18 222305](https://github.com/user-attachments/assets/e9547a0a-9331-433d-a013-e3edd7d5022b)
+
+![Screenshot 2025-01-18 222331](https://github.com/user-attachments/assets/8e2fc839-47ca-4beb-bb32-e251b968d448)
+
+![Screenshot 2025-01-18 222344](https://github.com/user-attachments/assets/d832d56a-462c-40d3-bd9d-059230e8ef53)
+
+![Screenshot 2025-01-18 222424](https://github.com/user-attachments/assets/880beb2b-9d42-42f9-83e1-37935316359d)
+
 
 Feel free to explore and enjoy the Netflix Gemini project!
 
-Citations:
-[1] https://github.com/Louis3797/awesome-readme-template
-[2] https://gist.github.com/ramantehlan/602ad8525699486e097092e4158c5bf1
-[3] https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc
-[4] https://github.com/othneildrew/Best-README-Template
-[5] https://www.reddit.com/r/programming/comments/l0mgcy/github_readme_templates_creating_a_good_readme_is/
-[6] https://www.makeareadme.com
-[7] https://www.readme-templates.com
-[8] https://github.com/durgeshsamariya/awesome-github-profile-readme-templates
