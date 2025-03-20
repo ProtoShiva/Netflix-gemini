@@ -1,4 +1,8 @@
 export const checkValidData = (email, password, name) => {
+  if (email === "") return "Email can't be empty"
+  if (password === "") return "Password can't be empty"
+  if (name === "") return "name can't be empty"
+
   const isEmailValid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
     email
   )

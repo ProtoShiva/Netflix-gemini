@@ -23,12 +23,17 @@ const Login = () => {
   //Toggle the form
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm)
+    setErrMessagge("")
+    email.current.value = ""
+    password.current.value = ""
+    name.current.value = ""
   }
 
   //handle the form submite
   const handleFormSubmit = (e) => {
     //checking validation
     e.preventDefault()
+
     let res
     if (isSignInForm) {
       res = checkValidData(email.current.value, password.current.value)
@@ -100,14 +105,14 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute inset-0 h-[100vh] w-[100vw]">
+      <div className="h-[100vh] w-[100vw] absolute inset-0">
         <img src={BG_URL} alt="bg" className="h-full w-full object-cover" />
       </div>
       <form
         onSubmit={handleFormSubmit}
-        className="w-[80%] md:w-[45%] xl:w-[23%] h-fit absolute -top-8 inset-0 p-8 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
+        className="bg-black bg-opacity-75 h-fit p-8 text-white w-[80%] -top-8 absolute inset-0 left-0 md:w-[45%] mx-auto my-36 right-0 xl:w-[23%]"
       >
-        <h1 className="font-bold text-2xl py-4">
+        <h1 className="text-2xl font-bold py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
@@ -115,7 +120,7 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="p-2 md:p-4 my-2 w-full text-sm bg-gray-700"
+            className="bg-gray-700 p-2 text-sm w-full md:p-4 my-2"
           />
         )}
 
@@ -123,21 +128,21 @@ const Login = () => {
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-2 md:p-4 my-2 w-full text-sm bg-gray-700"
+          className="bg-gray-700 p-2 text-sm w-full md:p-4 my-2"
         />
 
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-2 md:p-4 my-2 text-sm w-full bg-gray-700"
+          className="bg-gray-700 p-2 text-sm w-full md:p-4 my-2"
         />
-        <p className="text-red-500 text-lg font-bold py-2">{errMessage}</p>
-        <button className="p-2 md:p-4 my-6 w-full bg-red-600 rounded-lg">
+        <p className="text-lg text-red-500 font-bold py-2">{errMessage}</p>
+        <button className="bg-red-600 p-2 rounded-lg w-full md:p-4 my-6">
           {loading ? "loading..." : isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 
-        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
+        <p className="cursor-pointer py-4" onClick={toggleSignInForm}>
           {isSignInForm
             ? "New to Netflix? Sign Up Now."
             : "Already registered? Sign In Now."}
