@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux"
 import { auth } from "../utils/firebase"
 import {
   createUserWithEmailAndPassword,

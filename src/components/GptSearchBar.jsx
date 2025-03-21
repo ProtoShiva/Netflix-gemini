@@ -38,29 +38,30 @@ const GptSearchBar = () => {
       //error message
     }
     const gptMovies = result.response?.text().split(",")
+    console.log(gptMovies)
     const promiseArray = gptMovies.map((movie) => searchGptMovies(movie))
     const tmdbResults = await Promise.all(promiseArray)
     dispatch(
       addGptMovieResult({ movieResult: tmdbResults, movieNames: gptMovies })
     )
-    searchText.current.value = ""
+
     setLoading(false)
   }
 
   return (
     <div className="flex justify-center py-6">
       <form
-        className="w-[80%] lg:w-[50%] bg-black flex justify-between h-14 p-2"
+        className="flex bg-black h-14 justify-between p-2 w-[80%] lg:w-[50%]"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
           placeholder={lang[langKey].gptPlaceholder}
-          className="px-4 w-[60%] sm:w-[80%] text-sm lg:text-lg"
+          className="text-sm w-[60%] lg:text-lg px-4 sm:w-[80%]"
         />
         <button
-          className="bg-red-700  text-white rounded-lg  px-6 py-2"
+          className="bg-red-700 rounded-lg text-white px-6 py-2"
           onClick={handleGptSearchClick}
         >
           {loading ? "searching..." : lang[langKey].search}

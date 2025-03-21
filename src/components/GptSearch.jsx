@@ -9,7 +9,7 @@ const GptSearch = () => {
       <img
         src={BG_URL}
         alt="bg"
-        className="fixed -z-10 inset-0 h-screen w-screen object-cover"
+        className="h-screen w-screen -z-10 fixed inset-0 object-cover"
       />
       <GptSearchBar />
       <GptMovieSuggestion />
