@@ -1,26 +1,20 @@
 import React, { useRef, useState } from "react"
 import Header from "./Header"
 import { checkValidData } from "../utils/validate"
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth"
-import { auth } from "../utils/firebase"
+import { BG_URL } from "../utils/constants"
+import { signInUser, signUpUser } from "../utils/fireAuth"
 import { useDispatch } from "react-redux"
-import { addUser } from "../redux/slices/userSlice"
-import { BG_URL, USER_AVATAR } from "../utils/constants"
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true)
   const [loading, setLoading] = useState(false)
   const [errMessage, setErrMessagge] = useState(null)
   const dispatch = useDispatch()
+
   const email = useRef(null)
   const password = useRef(null)
   const name = useRef(null)
 
-  //Toggle the form
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm)
     setErrMessagge("")
@@ -29,77 +23,38 @@ const Login = () => {
     name.current.value = ""
   }
 
-  //handle the form submite
   const handleFormSubmit = (e) => {
-    //checking validation
     e.preventDefault()
 
-    let res
-    if (isSignInForm) {
-      res = checkValidData(email.current.value, password.current.value)
-    } else {
-      res = checkValidData(
-        email.current.value,
-        password.current.value,
-        name.current.value
-      )
-    }
+    let res = isSignInForm
+      ? checkValidData(email.current.value, password.current.value)
+      : checkValidData(
+          email.current.value,
+          password.current.value,
+          name.current.value
+        )
 
     setErrMessagge(res)
 
     if (res) return
     setLoading(true)
-    //signIn signUp user
-    if (!isSignInForm) {
-      //signUp User
-      createUserWithEmailAndPassword(
-        auth,
+
+    if (isSignInForm) {
+      signInUser(
         email.current.value,
-        password.current.value
+        password.current.value,
+        setErrMessagge,
+        setLoading
       )
-        .then((userCredential) => {
-          const user = userCredential.user
-          updateProfile(user, {
-            displayName: name.current.value,
-            photoURL: USER_AVATAR,
-          })
-            .then(() => {
-              const { uid, email, displayName, photoURL } = auth.currentUser
-              dispatch(
-                addUser({
-                  uid: uid,
-                  email: email,
-                  displayName: displayName,
-                  photoURL: photoURL,
-                })
-              )
-            })
-            .catch((error) => {
-              setErrMessagge(error.message)
-              setLoading(false)
-            })
-        })
-        .catch((error) => {
-          const errorCode = error.code
-          const errorMessage = error.message
-          setErrMessagge(errorCode, errorMessage)
-        })
     } else {
-      //signIn User
-      signInWithEmailAndPassword(
-        auth,
+      signUpUser(
         email.current.value,
-        password.current.value
+        password.current.value,
+        name.current.value,
+        setErrMessagge,
+        setLoading,
+        dispatch
       )
-        .then((userCredential) => {
-          const user = userCredential.user
-        })
-        .catch((error) => {
-          const errorCode = error.code
-          const errorMessage = error.message
-          setErrMessagge("User Doesn't Exist")
-          setLoading(false)
-        })
     }
   }
   return (
